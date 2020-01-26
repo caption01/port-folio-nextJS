@@ -15,8 +15,10 @@ class Index extends React.Component {
 
   render() {
 
+    const { isAuthenticated, user } = this.props.auth
+
     return (
-      <BaseLayout className="cover">
+      <BaseLayout {...this.props.auth} className="cover">
         <div className="main-section">
           <div className="background-image">
             <img src="/static/images/background-index.png" />
@@ -44,6 +46,9 @@ class Index extends React.Component {
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
                   <h1>
+                    {
+                      isAuthenticated && <span><b>{user.name}</b></span>
+                    }
                     Welcome to the portfolio website of Filip Jerga.
                     Get informed, collaborate and discover projects I was working on through the years!
                   </h1>
@@ -59,8 +64,6 @@ class Index extends React.Component {
                   className="self-typed"
                   cursorChar="|"
                 />
-
-
                 <div className="hero-welcome-bio">
                   <h1>
                     Let's take a look on my work.
